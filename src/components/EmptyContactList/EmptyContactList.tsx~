@@ -1,9 +1,0 @@
-import css from '../ContactList/EmptyContactList.module.css';
-
-const EmptyContactList = () => {
-  return (
-    <p className={css.message}>Your phonebook is empty</p>
-  );
-};
-
-export default EmptyContactList;

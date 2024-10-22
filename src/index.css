@@ -1,12 +1,17 @@
 :root {
-  --primary: #2c2c2c;
-  --secondary: #979797;
-  --white: #fff;
+  --font: Inter, sans-serif;
+  --white: #FFFFFF;
+  --inputs: #F7F7F7;
+  --main: #101828;
+  --button: #E44848;
+  --button-hover: #D84343;
 }
 
 body {
-  font-family: sans-serif;
+  font-size: 16px;
   line-height: 1.5;
+  color: var(--main);
+  font-family: var(--font), sans-serif;
 }
 
 h1,
@@ -29,4 +34,23 @@ ol {
 img {
   display: block;
   max-width: 100%;
+}
+
+.container {
+  width: 1344px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 16px 48.5px;
+  min-width: 166px;
+  background: var(--button);
+  color: var(--white);
+  border-radius: 200px;
+  font-family: var(--font), sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: -0.004em;
 }
