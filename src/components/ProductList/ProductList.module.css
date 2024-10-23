@@ -1,0 +1,12 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

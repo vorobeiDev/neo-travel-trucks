@@ -1,5 +1,9 @@
 .header {
   background: var(--inputs);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .content {
@@ -24,6 +28,9 @@
   color: var(--main);
   font-weight: 500;
   transition: all .3s ease-in-out;
+  &:hover {
+    color: var(--button-hover);
+  }
 }
 
 .active {

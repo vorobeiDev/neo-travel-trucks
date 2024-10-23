@@ -1,0 +1,10 @@
+import css from './CategoryCard.module.css';
+
+const CategoryCard = ({ icon, label }) => {
+  return (
+    <div className={css.card}>
+    </div>
+  );
+};
+
+export default CategoryCard;

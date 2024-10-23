@@ -75,7 +75,6 @@ img {
     background: var(--white);
     cursor: pointer;
     padding: 15px 32px;
-    min-width: 145px;
     &:hover, &:focus {
       border-color: var(--button-hover);
     }

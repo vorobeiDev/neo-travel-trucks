@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import Logo from '../Logo/Logo.jsx';
 
-import { ROUTER } from '../../variables/router.js';
+import { ROUTE } from '../../variables/route.js';
 
 import css from './Header.module.css';
 
@@ -17,7 +17,7 @@ const Header = () => (
             <li>
               <NavLink
                 className={({ isActive }) => clsx(css.link, { [css.active]: isActive })}
-                to={ROUTER.HOME}
+                to={ROUTE.HOME}
               >
                 Home
               </NavLink>
@@ -25,7 +25,7 @@ const Header = () => (
             <li>
               <NavLink
                 className={({ isActive }) => clsx(css.link, { [css.active]: isActive })}
-                to={ROUTER.CATALOG}
+                to={ROUTE.CATALOG}
               >
                 Catalog
               </NavLink>
