@@ -6,7 +6,7 @@ const SvgIcon = ({ path, width, height, size = 20 }) => {
       height={height ?? size}
       className={`icon-${path}`}
     >
-      <use href={`public/icons/sprite.svg#icon-${path}`} />
+      <use href={`../../public/icons/sprite.svg#icon-${path}`} />
     </svg>
   );
 };

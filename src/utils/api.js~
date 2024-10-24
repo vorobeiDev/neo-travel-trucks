@@ -15,3 +15,8 @@ export const fetchProductsApi = async ({ page = 1, limit = 4, filters = {}}) => 
 
   return response.data;
 };
+
+export const featureProductByIdApi = async (id) => {
+  const response = await axiosInstance.get(`/campers/${id}`);
+  return response.data;
+};

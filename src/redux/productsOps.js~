@@ -1,17 +1,30 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
-import { fetchProductsApi } from '../helpers/api.js';
+import { featureProductByIdApi, fetchProductsApi } from '../utils/api.js';
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (isConcat = true, { getState, rejectWithValue }) => {
     try {
       const state = getState();
-      const { page, filters } = state.products;
+      const { page, filters } = state.catalog;
       return {
         ...await fetchProductsApi({page, filters}),
-        isReset,
+        isConcat,
       };
+    } catch (error) {
+      toast.error(error.message);
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const fetchProductById = createAsyncThunk(
+  'product/fetchProductById',
+  async (productId, { rejectWithValue }) => {
+    try {
+      return await featureProductByIdApi(productId);
     } catch (error) {
       return rejectWithValue(error.message);
     }

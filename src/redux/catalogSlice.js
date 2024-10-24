@@ -1,15 +1,14 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import { getIsNameEqual, getIsPhoneEqual } from '../helpers/filterHelpers.js';
 import { fetchProducts } from './productsOps.js';
 
-const contactsInitialState = {
+const catalogInitialState = {
   total: 0,
   page: 1,
-  items: [],
+  products: [],
   filters: {},
   isLoading: false,
-  isError: null
+  isError: null,
 };
 
 const handlePending = (state) => {
@@ -20,14 +19,14 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.isError = action.payload;
-  state.items = [];
+  state.products = [];
   state.page = 1;
   state.total = 0;
 }
 
-const contactsSlice = createSlice({
-  name: 'products',
-  initialState: contactsInitialState,
+const catalogSlice = createSlice({
+  name: 'catalog',
+  initialState: catalogInitialState,
   reducers: {
     setPage: (state, action) => {
       state.page = action.payload;
@@ -43,11 +42,11 @@ const contactsSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action) => {
         if (action.payload.isConcat) {
           const newItems = action.payload.items.filter(
-            (newItem) => !state.items.some((item) => item.id === newItem.id)
+            (newItem) => !state.products.some((item) => item.id === newItem.id)
           );
-          state.items = [...state.items, ...newItems];
+          state.products = [...state.products, ...newItems];
         } else {
-          state.items = action.payload.items;
+          state.products = action.payload.items;
         }
         state.total = action.payload.total;
         state.isLoading = false;
@@ -57,12 +56,11 @@ const contactsSlice = createSlice({
   },
 });
 
-export const selectProducts = (state) => state.products;
-export const selectProductItems = (state) => state.products.items;
+export const selectProducts = (state) => state.catalog;
 
 export const {
   setPage,
   setFilters,
-} = contactsSlice.actions;
+} = catalogSlice.actions;
 
-export default contactsSlice.reducer;
+export default catalogSlice.reducer;

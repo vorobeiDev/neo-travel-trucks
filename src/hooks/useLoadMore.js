@@ -2,20 +2,20 @@ import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchProducts } from '../redux/productsOps.js';
-import { selectProducts, setPage } from '../redux/productsSlice.js';
+import { selectProducts, setPage } from '../redux/catalogSlice.js';
 
 const HEADER_HEIGHT = 90;
 
 const useLoadMore = () => {
   const dispatch = useDispatch();
-  const { items, total, page } = useSelector(selectProducts);
+  const { products, total, page } = useSelector(selectProducts);
   const productRef = useRef(null);
   const [prevItemsLength, setPrevItemsLength] = useState(0);
 
   const loadMoreHandler = async () => {
-    if (items.length >= total) return;
+    if (products.length >= total) return;
 
-    setPrevItemsLength(items.length);
+    setPrevItemsLength(products.length);
     await dispatch(setPage(page + 1));
     await dispatch(fetchProducts()).then(() => {
       if (productRef.current) {

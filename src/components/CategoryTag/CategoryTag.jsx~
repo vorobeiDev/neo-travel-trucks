@@ -4,7 +4,7 @@ import css from './CategoryTag.module.css';
 const CategoryTag = ({ iconPath, label }) => {
   return (
     <div className={css.card}>
-      <SvgIcon path={iconPath} size="32" />
+      <SvgIcon path={iconPath} size="20" />
       <p className={css.label}>{label}</p>
     </div>
   );

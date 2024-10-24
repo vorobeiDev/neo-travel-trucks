@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { fetchProducts } from '../../redux/productsOps.js';
-import { setFilters } from '../../redux/productsSlice.js';
+import { setFilters } from '../../redux/catalogSlice.js';
 
 import FiltersList from '../FiltersList/FiltersList.jsx';
 import Location from '../Location/Location.jsx';
@@ -17,7 +17,6 @@ const Sidebar = () => {
 
     const formData = new FormData(e.target);
     const filters = [...formData].reduce((acc, [name, value]) => {
-      console.log('value', name, value)
       value = value === 'on' ? true : value;
       return {
         ...acc,

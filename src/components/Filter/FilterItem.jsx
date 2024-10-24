@@ -18,7 +18,7 @@ const FilterItem = ({ id, title, icon, fieldName, type, isChecked, onChange }) =
         type={type}
         value={type === 'radio' ? id : 'on'}
         checked={isChecked}
-        onChange={() => onChange(id)}
+        onChange={type === 'radio' ? () => onChange(id) : undefined}
         onClick={handleClick}
       />
       <SvgIcon path={icon} size={32} />

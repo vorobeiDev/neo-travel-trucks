@@ -4,7 +4,7 @@ import { getPluralText } from '../../helpers/textHelpers.js';
 
 import CategoryTag from '../CategoryTag/CategoryTag.jsx';
 
-import { ROUTE } from '../../variables/routes.js';
+import { ROUTE } from '../../variables/route.js';
 import SvgIcon from '../SvgIcon/SvgIcon.jsx';
 
 import css from './ProductCard.module.css';
@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className={css.details}>
-          <Link to={`${ROUTE.CATALOG}/${id}`} className={css.rating}>
+          <Link to={`${ROUTE.CATALOG}/${id}/reviews`} className={css.rating}>
             <SvgIcon path="rating" width={16} height={16} />
             {rating}({getPluralText('Review', reviews.length)})
           </Link>
@@ -77,7 +77,7 @@ const ProductCard = ({ product }) => {
           {gas && <CategoryTag label="Gas" iconPath="gas"/>}
           {water && <CategoryTag label="Water" iconPath="water"/>}
         </div>
-        <Link to={`${ROUTE.CATALOG}/${id}`} className="button">Show more</Link>
+        <Link to={`${ROUTE.CATALOG}/${id}/features`} className="button">Show more</Link>
       </div>
     </div>
   );

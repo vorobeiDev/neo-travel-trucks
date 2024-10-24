@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { currencyFormat } from '../../helpers/currencyHelpers.js';
-import { getPluralText } from '../../helpers/textHelpers.js';
+import { currencyFormat } from '../../utils/currencyHelpers.js';
+import { getPluralText } from '../../utils/textHelpers.js';
 
 import CategoryTag from '../CategoryTag/CategoryTag.jsx';
 
@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className={css.details}>
-          <Link to={`${ROUTE.CATALOG}/${id}`} className={css.rating}>
+          <Link to={`${ROUTE.CATALOG}/${id}/reviews`} className={css.rating}>
             <SvgIcon path="rating" width={16} height={16} />
             {rating}({getPluralText('Review', reviews.length)})
           </Link>
@@ -77,7 +77,7 @@ const ProductCard = ({ product }) => {
           {gas && <CategoryTag label="Gas" iconPath="gas"/>}
           {water && <CategoryTag label="Water" iconPath="water"/>}
         </div>
-        <Link to={`${ROUTE.CATALOG}/${id}`} className="button">Show more</Link>
+        <Link to={`${ROUTE.CATALOG}/${id}/features`} className="button">Show more</Link>
       </div>
     </div>
   );

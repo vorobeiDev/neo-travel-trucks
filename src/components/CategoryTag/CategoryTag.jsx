@@ -1,4 +1,5 @@
 import SvgIcon from '../SvgIcon/SvgIcon.jsx';
+
 import css from './CategoryTag.module.css';
 
 const CategoryTag = ({ iconPath, label }) => {

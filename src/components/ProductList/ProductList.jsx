@@ -3,19 +3,19 @@ import useLoadMore from '../../hooks/useLoadMore.js';
 import Loader from '../Loader/Loader.jsx';
 
 import ProductCard from '../ProductCard/ProductCard.jsx';
-import { selectProducts } from '../../redux/productsSlice.js';
+import { selectProducts } from '../../redux/catalogSlice.js';
 
 import css from './ProductList.module.css';
 
 const ProductList = () => {
-  const { items, total, isLoading } = useSelector(selectProducts);
+  const { products, total, isLoading } = useSelector(selectProducts);
   const { loadMoreHandler, prevItemsLength, productRef } = useLoadMore();
 
   return (
     <div className={css.catalog}>
       <ul className={css.list}>
-        {items.length > 0 ? (
-          items.map((product, index) => (
+        {products.length > 0 ? (
+          products.map((product, index) => (
             <li
               key={product.id}
               ref={index === prevItemsLength ? productRef : null}
@@ -28,7 +28,7 @@ const ProductList = () => {
         )}
       </ul>
       {isLoading && <Loader />}
-      {items.length < total && (
+      {products.length < total && (
         <button
           className="button button--secondary"
           onClick={loadMoreHandler}
