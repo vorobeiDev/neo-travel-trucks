@@ -1,20 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import axiosInstance from '../helpers/api.js';
-import { setPage } from './productsSlice.js';
+import { fetchProductsApi } from '../helpers/api.js';
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async (page = 1, { dispatch, rejectWithValue }) => {
+  async (isConcat = true, { getState, rejectWithValue }) => {
     try {
-      const response = await axiosInstance.get('/campers', {
-        params: {
-          page,
-          limit: 4,
-        }
-      });
-      dispatch(setPage(page));
-      return response.data;
+      const state = getState();
+      const { page, filters } = state.products;
+      return {
+        ...await fetchProductsApi({page, filters}),
+        isReset,
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }

@@ -1,36 +1,14 @@
-import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import useLoadMore from '../../hooks/useLoadMore.js';
 
 import ProductCard from '../ProductCard/ProductCard.jsx';
-
-import { fetchProducts } from '../../redux/productsOps.js';
 import { selectProducts } from '../../redux/productsSlice.js';
 
 import css from './ProductList.module.css';
 
-const HEADER_HEIGHT = 90;
-
 const ProductList = () => {
-  const dispatch = useDispatch();
-  const { items, total, page } = useSelector(selectProducts);
-
-  const [prevItemsLength, setPrevItemsLength] = useState(0);
-  const firstNewProductRef = useRef(null);
-
-  const loadMoreHandler = async () => {
-    if (items.length >= total) return;
-
-    setPrevItemsLength(items.length);
-    await dispatch(fetchProducts(page + 1));
-
-    if (firstNewProductRef.current) {
-      const elementPosition = firstNewProductRef.current.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
+  const { items, total } = useSelector(selectProducts);
+  const { loadMoreHandler, prevItemsLength, productRef } = useLoadMore();
 
   return (
     <div className={css.catalog}>
@@ -39,7 +17,7 @@ const ProductList = () => {
           items.map((product, index) => (
             <li
               key={product.id}
-              ref={index === prevItemsLength ? firstNewProductRef : null} // Реф на перший новий елемент
+              ref={index === prevItemsLength ? productRef : null}
             >
               <ProductCard product={product} />
             </li>

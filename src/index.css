@@ -5,6 +5,7 @@
   --inputs: #F7F7F7;
   --tag: #F2F4F7;
   --gray-light: #DADDE1;
+  --gray: #6C717B;
   --text: #475467;
   --main: #101828;
   --button: #E44848;
@@ -65,6 +66,7 @@ img {
   text-decoration: none;
   letter-spacing: -0.004em;
   border: 1px solid transparent;
+  cursor: pointer;
   transition: all .3s ease-in-out;
   &:hover, &:focus {
     background: var(--button-hover);
@@ -73,7 +75,6 @@ img {
     border: 1px solid var(--gray-light);
     color: var(--main);
     background: var(--white);
-    cursor: pointer;
     padding: 15px 32px;
     min-width: 145px;
     &:hover, &:focus {

@@ -1,0 +1,33 @@
+.location {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 8px;
+  color: var(--gray);
+}
+
+.field {
+  background: var(--inputs);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  color: var(--main);
+  font-family: var(--font), sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+  outline: none;
+  background: none;
+  &::placeholder {
+    color: var(--gray);
+  }
+}

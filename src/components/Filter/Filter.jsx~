@@ -1,0 +1,25 @@
+import SvgIcon from '../SvgIcon/SvgIcon.jsx';
+
+const Filter = ({ id, title, icon, fieldName, type }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked((prev) => (type === 'radio' ? !prev : !prev));
+  };
+
+  return (
+    <label>
+      <input
+        name={fieldName ?? id}
+        type={type}
+        checked={isChecked}
+        onChange={handleChange}
+        value={type === 'radio' ? id : 'on'}
+      />
+      <SvgIcon path={icon}/>
+      <span>{title}</span>
+    </label>
+  );
+};
+
+export default Filter;

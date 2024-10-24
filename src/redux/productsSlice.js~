@@ -2,24 +2,26 @@ import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 import { getIsNameEqual, getIsPhoneEqual } from '../helpers/filterHelpers.js';
 import { fetchProducts } from './productsOps.js';
-import { selectNameFilter } from './filtersSlice.js';
 
 const contactsInitialState = {
   total: 0,
   page: 1,
   items: [],
-  loading: false,
-  error: null
+  filters: {},
+  isLoading: false,
+  isError: null
 };
 
 const handlePending = (state) => {
-  state.loading = true;
-  state.error = null;
+  state.isLoading = true;
+  state.isError = null;
 }
 
 const handleRejected = (state, action) => {
-  state.loading = false;
-  state.error = action.payload;
+  state.isLoading = false;
+  state.isError = action.payload;
+  state.items = [];
+  state.page = 1;
 }
 
 const contactsSlice = createSlice({
@@ -28,30 +30,37 @@ const contactsSlice = createSlice({
   reducers: {
     setPage: (state, action) => {
       state.page = action.payload;
+    },
+    setFilters: (state, action) => {
+      state.page = 1;
+      state.filters = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, handlePending)
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        const newItems = action.payload.items.filter(
-          (newItem) => !state.items.some((item) => item.id === newItem.id)
-        );
+        if (action.payload.isConcat) {
+          const newItems = action.payload.items.filter(
+            (newItem) => !state.items.some((item) => item.id === newItem.id)
+          );
+          state.items = [...state.items, ...newItems];
+        } else {
+          state.items = action.payload.items;
+        }
         state.total = action.payload.total;
-        state.items = [...state.items, ...newItems];
-        state.loading = false;
-        state.error = '';
+        state.isLoading = false;
+        state.isError = '';
       })
       .addCase(fetchProducts.rejected, handleRejected)
   },
 });
 
-
 export const selectProducts = (state) => state.products;
 export const selectProductItems = (state) => state.products.items;
 
 export const selectFilteredContacts = createSelector(
-  [selectProductItems, selectNameFilter],
+  [selectProductItems],
   (contacts, search) => {
     return contacts.filter((contact) => getIsNameEqual(contact.name, search)
       || getIsPhoneEqual(contact.phone, search));
@@ -59,7 +68,8 @@ export const selectFilteredContacts = createSelector(
 );
 
 export const {
-  setPage
+  setPage,
+  setFilters,
 } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
