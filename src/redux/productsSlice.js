@@ -58,15 +58,6 @@ const contactsSlice = createSlice({
 });
 
 export const selectProducts = (state) => state.products;
-export const selectProductItems = (state) => state.products.items;
-
-export const selectFilteredContacts = createSelector(
-  [selectProductItems],
-  (contacts, search) => {
-    return contacts.filter((contact) => getIsNameEqual(contact.name, search)
-      || getIsPhoneEqual(contact.phone, search));
-  },
-);
 
 export const {
   setPage,

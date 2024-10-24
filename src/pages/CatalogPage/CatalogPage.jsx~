@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import clsx from 'clsx';
 
@@ -13,9 +13,9 @@ import css from './CatalogPage.module.css';
 const CatalogPage = () => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <div className={clsx(css.catalogPage, 'container')}>

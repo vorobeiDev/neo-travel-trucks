@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import useLoadMore from '../../hooks/useLoadMore.js';
+import Loader from '../Loader/Loader.jsx';
 
 import ProductCard from '../ProductCard/ProductCard.jsx';
 import { selectProducts } from '../../redux/productsSlice.js';
@@ -7,7 +8,7 @@ import { selectProducts } from '../../redux/productsSlice.js';
 import css from './ProductList.module.css';
 
 const ProductList = () => {
-  const { items, total } = useSelector(selectProducts);
+  const { items, total, isLoading } = useSelector(selectProducts);
   const { loadMoreHandler, prevItemsLength, productRef } = useLoadMore();
 
   return (
@@ -26,6 +27,7 @@ const ProductList = () => {
           <p>Products list is empty</p>
         )}
       </ul>
+      {isLoading && <Loader />}
       {items.length < total && (
         <button
           className="button button--secondary"
