@@ -22,7 +22,7 @@ const FilterItem = ({ id, title, icon, fieldName, type, isChecked, onChange }) =
         onClick={handleClick}
       />
       <SvgIcon path={icon} size={32} />
-      <span className={css.title}>{title}</span>
+      <span>{title}</span>
     </label>
   );
 };
