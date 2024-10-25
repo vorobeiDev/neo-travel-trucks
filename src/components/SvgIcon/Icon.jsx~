@@ -1,7 +1,0 @@
-const Icon = ({ path }) => {
-  return (
-    <svg>
-      <use xlinkHref={`/sprite.svg${path}`}></use>
-    </svg>
-  );
-}
