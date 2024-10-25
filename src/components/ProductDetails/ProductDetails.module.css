@@ -1,0 +1,48 @@
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--gray-light);
+  gap: 40px;
+}
+
+.link {
+  display: block;
+  color: var(--main);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  padding-bottom: 24px;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 5px;
+    background: var(--button);
+    position: absolute;
+    bottom: -2.5px;
+    left: auto;
+    right: 0;
+    transition: all .3s ease;
+  }
+  &:hover {
+    &::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+.active {
+  &::before {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 44px 0 80px;
+  align-items: flex-start;
+  gap: 40px;
+}

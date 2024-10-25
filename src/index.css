@@ -46,6 +46,10 @@ img {
   margin-top: 72px;
 }
 
+a, a:hover, a:focus {
+  text-decoration: none;
+}
+
 .container {
   width: 1344px;
   padding: 0 16px;
@@ -81,4 +85,8 @@ img {
       border-color: var(--button-hover);
     }
   }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
 }

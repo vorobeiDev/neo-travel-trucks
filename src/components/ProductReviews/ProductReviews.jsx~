@@ -1,7 +1,0 @@
-const ProductReviews = () => {
-  return (
-    <div>
-      ProductReviews
-    </div>
-  );
-}

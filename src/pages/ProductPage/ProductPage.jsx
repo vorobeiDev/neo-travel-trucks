@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Loader from '../../components/Loader/Loader.jsx';
 import Product from '../../components/Product/Product.jsx';
+import ProductDetails from '../../components/ProductDetails/ProductDetails.jsx';
 
 import { fetchProductById } from '../../redux/productsOps.js';
 import { selectProduct } from '../../redux/productSlice.js';
@@ -21,14 +22,14 @@ const ProductPage = () => {
   return (
     <div className="container">
       {
-        !product
-          ? <p>Product not found</p>
-          : (
+        product
+          ? (
             <>
               <Product />
-              <Outlet />
+              <ProductDetails />
             </>
           )
+          : <p>Product not found</p>
       }
     </div>
   );

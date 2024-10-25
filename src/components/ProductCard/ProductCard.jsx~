@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { currencyFormat } from '../../helpers/currencyHelpers.js';
-import { getPluralText } from '../../helpers/textHelpers.js';
+import { currencyFormat } from '../../utils/currencyHelpers.js';
+import { getPluralText } from '../../utils/textHelpers.js';
 
-import CategoryTag from '../CategoryTag/CategoryTag.jsx';
+import Tags from '../Tags/Tags.jsx';
+import SvgIcon from '../SvgIcon/SvgIcon.jsx';
 
 import { ROUTE } from '../../variables/route.js';
-import SvgIcon from '../SvgIcon/SvgIcon.jsx';
 
 import css from './ProductCard.module.css';
 
@@ -19,17 +19,6 @@ const ProductCard = ({ product }) => {
     rating,
     location,
     description,
-    transmission,
-    engine,
-    AC,
-    kitchen,
-    bathroom,
-    TV,
-    radio,
-    refrigerator,
-    microwave,
-    gas,
-    water
   } = product;
 
   return (
@@ -39,7 +28,7 @@ const ProductCard = ({ product }) => {
         src={gallery[0].thumb}
         alt={name}
       />
-      <div className={css.content}>
+      <div>
         <div className={css.info}>
           <h2 className={css.title}>{name}</h2>
           <div className={css.priceContainer}>
@@ -64,19 +53,7 @@ const ProductCard = ({ product }) => {
         <p className={css.description}>
           {description}
         </p>
-        <div className={css.tags}>
-          <CategoryTag label={transmission} iconPath="transmission"/>
-          <CategoryTag label={engine} iconPath="engine"/>
-          {AC && <CategoryTag label="AC" iconPath="ac"/>}
-          {bathroom && <CategoryTag label="Bathroom" iconPath="bathroom"/>}
-          {kitchen && <CategoryTag label="Kitchen" iconPath="kitchen"/>}
-          {TV && <CategoryTag label="TV" iconPath="tv"/>}
-          {radio && <CategoryTag label="Radio" iconPath="radio"/>}
-          {refrigerator && <CategoryTag label="Refrigerator" iconPath="refrigerator"/>}
-          {microwave && <CategoryTag label="Microwave" iconPath="microwave"/>}
-          {gas && <CategoryTag label="Gas" iconPath="gas"/>}
-          {water && <CategoryTag label="Water" iconPath="water"/>}
-        </div>
+        <Tags product={product} />
         <Link to={`${ROUTE.CATALOG}/${id}/features`} className="button">Show more</Link>
       </div>
     </div>

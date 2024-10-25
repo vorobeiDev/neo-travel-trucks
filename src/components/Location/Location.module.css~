@@ -15,6 +15,15 @@
   align-items: center;
   gap: 8px;
   border-radius: 12px;
+  [class^="icon-"], [class*=" icon-"] {
+    fill: red;
+    transition: all .3s ease;
+  }
+  &:has(.input:placeholder-shown) {
+    [class^="icon-"], [class*=" icon-"] {
+      fill: var(--gray);
+    }
+  }
 }
 
 .input {
@@ -28,6 +37,6 @@
   outline: none;
   background: none;
   &::placeholder {
-    
+    color: var(--gray);
   }
 }

@@ -6,6 +6,7 @@ import FiltersList from '../FiltersList/FiltersList.jsx';
 import Location from '../Location/Location.jsx';
 
 import { ENGINE_TYPE, TRANSMISSION_TYPE, VEHICLE_EQUIPMENT, VEHICLE_TYPE } from '../../variables/vehicle.js';
+import Title from '../Title/Title.jsx';
 
 import css from './Sidebar.module.css';
 
@@ -17,7 +18,6 @@ const Sidebar = () => {
 
     const formData = new FormData(e.target);
     const filters = [...formData].reduce((acc, [name, value]) => {
-      console.log('value', name, value)
       value = value === 'on' ? true : value;
       return {
         ...acc,
@@ -33,9 +33,9 @@ const Sidebar = () => {
     <form onSubmit={submitHandler}>
       <Location />
       <div className={css.filters}>
-        <h2 className={css.title}>
+        <Title>
           Filters
-        </h2>
+        </Title>
         <FiltersList
           title="Vehicle equipment"
           items={VEHICLE_EQUIPMENT}

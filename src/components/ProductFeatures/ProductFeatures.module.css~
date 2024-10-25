@@ -1,0 +1,27 @@
+.features {
+  background: var(--inputs);
+  border-radius: 10px;
+  padding: 44px 52px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tags {
+  margin-bottom: 100px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  span {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}

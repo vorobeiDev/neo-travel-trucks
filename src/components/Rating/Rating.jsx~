@@ -1,0 +1,21 @@
+import clsx from 'clsx';
+
+import SvgIcon from '../SvgIcon/SvgIcon.jsx';
+
+import css from './Rating.module.css';
+
+const MAXIMUM_STARS = Array(5).fill(0);
+
+const Rating = ({ rating }) => {
+  return (
+    <ul className={css.rating}>
+      {MAXIMUM_STARS.map((_, index) => (
+        <li key={index} className={clsx(css.star, { [css.active]: index < rating })}>
+          <SvgIcon path="rating" size={16}  />
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default Rating;

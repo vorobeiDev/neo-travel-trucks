@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import FilterItem from '../Filter/FilterItem.jsx';
+import Title from '../Title/Title.jsx';
 
 import css from './FiltersList.module.css';
 
@@ -13,7 +14,7 @@ const FiltersList = ({ title, items, type = 'checkbox' }) => {
 
   return (
     <div>
-      <h3 className={css.title}>{title}</h3>
+      <Title>{title}</Title>
       <ul className={css.list}>
         {items.map(({ id, title, icon, fieldName }) => (
           <li key={id}>

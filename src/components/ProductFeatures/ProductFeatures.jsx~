@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
 
 import Tags from '../Tags/Tags.jsx';
-import Title from '../Title/Title.jsx';
 
-import { convertToTitleCase } from '../../utils/textHelpers.js';
 import { selectProduct } from '../../redux/productSlice.js';
+import Title from '../Title/Title.jsx';
 
 import css from './ProductFeatures.module.css';
 
@@ -17,7 +16,7 @@ const ProductFeatures = () => {
       <Title>Vehicle details</Title>
       <ul className={css.list}>
         <li className={css.feature}>
-          <span>Form:</span> <span>{convertToTitleCase(product.form)}</span>
+          <span>Form:</span> <span>{product.form}</span>
         </li>
         <li className={css.feature}>
           <span>Length:</span> <span>{product.length}</span>
