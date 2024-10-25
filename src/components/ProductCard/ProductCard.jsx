@@ -1,15 +1,22 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { currencyFormat } from '../../utils/currencyHelpers.js';
-import { getPluralText } from '../../utils/textHelpers.js';
+
+import clsx from 'clsx';
 
 import Tags from '../Tags/Tags.jsx';
 import SvgIcon from '../SvgIcon/SvgIcon.jsx';
 
+import { currencyFormat,  } from '../../utils/currencyHelpers.js';
+import { selectFavorites, toggleFavorite } from '../../redux/favoritesSlice.js';
+import { getPluralText } from '../../utils/textHelpers.js';
 import { ROUTE } from '../../variables/route.js';
 
 import css from './ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+
   const {
     id,
     gallery,
@@ -20,6 +27,10 @@ const ProductCard = ({ product }) => {
     location,
     description,
   } = product;
+
+  const handlerFavorite = () => {
+    dispatch(toggleFavorite(id));
+  };
 
   return (
     <div className={css.card}>
@@ -35,7 +46,10 @@ const ProductCard = ({ product }) => {
             <p className={css.price}>
               {currencyFormat(price)}
             </p>
-            <button className={css.favorite}>
+            <button
+              onClick={handlerFavorite}
+              className={clsx(css.favorite, { [css.activeFavorite]: favorites.includes(id) })}
+            >
               <SvgIcon path="like" width={26} height={24} />
             </button>
           </div>

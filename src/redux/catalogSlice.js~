@@ -6,6 +6,7 @@ const catalogInitialState = {
   total: 0,
   page: 1,
   products: [],
+  favorites: [],
   filters: {},
   isLoading: false,
   isError: null,
@@ -34,6 +35,13 @@ const catalogSlice = createSlice({
     setFilters: (state, action) => {
       state.page = 1;
       state.filters = action.payload;
+    },
+    toggleFavorite: (state, action) => {
+      if (state.favorites.includes(action.payload)) {
+        state.favorites = state.favorites.filter((id) => id !== action.payload);
+      } else {
+        state.favorites.push(action.payload);
+      }
     }
   },
   extraReducers: (builder) => {
@@ -46,7 +54,7 @@ const catalogSlice = createSlice({
           );
           state.products = [...state.products, ...newItems];
         } else {
-          state.products = action.payload.products;
+          state.products = action.payload.items;
         }
         state.total = action.payload.total;
         state.isLoading = false;
@@ -57,10 +65,12 @@ const catalogSlice = createSlice({
 });
 
 export const selectProducts = (state) => state.catalog;
+export const selectFavorites = (state) => state.catalog.favorites;
 
 export const {
   setPage,
   setFilters,
+  toggleFavorite,
 } = catalogSlice.actions;
 
 export default catalogSlice.reducer;

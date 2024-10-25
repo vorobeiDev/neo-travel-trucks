@@ -9,11 +9,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage'
 
-import catalogReducer from './catalogSlice.js';
-import favoritesReducer from './favoritesSlice.js';
-import productReducer from './productSlice.js';
+import catalogSlice from './catalogSlice.js';
+import favoritesSlice from './favoritesSlice.js';
+import productSlice from './productSlice.js';
 
 const favoritesPersistConfig = {
   key: 'favorites',
@@ -21,12 +21,12 @@ const favoritesPersistConfig = {
   whitelist: ['favorites'],
 };
 
-const persistedFavoritesReducer = persistReducer(favoritesPersistConfig, favoritesReducer);
+const persistedFavoritesReducer = persistReducer(favoritesPersistConfig, favoritesSlice);
 
 export const store = configureStore({
   reducer: {
-    catalog: catalogReducer,
-    product: productReducer,
+    catalog: catalogSlice,
+    product: productSlice,
     favorites: persistedFavoritesReducer,
   },
   middleware: (getDefaultMiddleware) =>
