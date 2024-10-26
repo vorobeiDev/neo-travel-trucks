@@ -35,3 +35,11 @@
   background: none;
   cursor: pointer;
 }
+
+.chevron {
+  transition: transform .3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}

@@ -4,7 +4,7 @@ import css from './Loader.module.css';
 
 const Loader = () => (
   <div className={css.loader}>
-    <Triangle color="orange" />
+    <Triangle color="#E44848" />
   </div>
 );
 

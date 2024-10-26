@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 
 import FilterItem from '../Filter/FilterItem.jsx';
+import SvgIcon from '../SvgIcon/SvgIcon.jsx';
 import Title from '../Title/Title.jsx';
 
 import css from './FiltersList.module.css';
@@ -30,7 +31,7 @@ const FiltersList = ({ title, items, type = 'checkbox', isActive = false }) => {
   return (
     <div>
       <button onClick={toggleList} type="button" className={css.button}>
-        <Title>{title}</Title>
+        <Title>{title} <SvgIcon size={20} path="chevron" className={clsx(css.chevron, { [css.rotate]: isOpen })} /></Title>
       </button>
       <ul ref={listRef} className={clsx(css.list, { [css.open]: isOpen })}>
         {items.map(({ id, title, icon, fieldName }) => (

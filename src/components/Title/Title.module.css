@@ -5,4 +5,7 @@
   padding-bottom: 23px;
   margin-bottom: 24px;
   border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
