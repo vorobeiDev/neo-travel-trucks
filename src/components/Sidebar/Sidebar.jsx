@@ -38,6 +38,7 @@ const Sidebar = () => {
         <FiltersList
           title="Vehicle equipment"
           items={VEHICLE_EQUIPMENT}
+          isActive
         />
         <FiltersList
           title="Vehicle type"

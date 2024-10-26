@@ -14,6 +14,20 @@ export const fetchProducts = createAsyncThunk(
         isConcat,
       };
     } catch (error) {
+      if (error.status === 404) {
+        toast.success(
+          isConcat ? 'No more products!' : 'No products found with these filters!',
+          {
+            icon: '😩',
+          }
+        );
+        return {
+          isConcat,
+          items: [],
+          total: 0,
+          page: 1,
+        };
+      }
       toast.error(error.message);
       return rejectWithValue(error.message);
     }
