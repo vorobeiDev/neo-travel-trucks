@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import useLoadMore from '../../hooks/useLoadMore.js';
-import Loader from '../Loader/Loader.jsx';
 
+import Loader from '../Loader/Loader.jsx';
 import ProductCard from '../ProductCard/ProductCard.jsx';
+
+import useLoadMore from '../../hooks/useLoadMore.js';
 import { selectProducts } from '../../redux/catalogSlice.js';
 
 import css from './ProductList.module.css';

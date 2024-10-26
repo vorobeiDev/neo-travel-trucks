@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
+
+import clsx from 'clsx';
 
 import BookingForm from '../BookingForm/BookingForm.jsx';
 

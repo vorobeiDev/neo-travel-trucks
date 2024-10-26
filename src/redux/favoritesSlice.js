@@ -4,7 +4,6 @@ const favoritesInitialState = {
   favorites: [],
 };
 
-
 const favoritesSlice = createSlice({
   name: 'favorites',
   initialState: favoritesInitialState,

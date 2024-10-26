@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { fetchProducts } from '../../redux/productsOps.js';
-import { setFilters } from '../../redux/catalogSlice.js';
 
 import FiltersList from '../FiltersList/FiltersList.jsx';
 import Location from '../Location/Location.jsx';
 
+import { fetchProducts } from '../../redux/productsOps.js';
+import { setFilters } from '../../redux/catalogSlice.js';
 import { ENGINE_TYPE, TRANSMISSION_TYPE, VEHICLE_EQUIPMENT, VEHICLE_TYPE } from '../../variables/vehicle.js';
 
 import css from './Sidebar.module.css';

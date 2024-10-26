@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import clsx from 'clsx';
-import { selectProduct } from '../../redux/productSlice.js';
 
-import { currencyFormat } from '../../utils/currencyHelpers.js';
+import clsx from 'clsx';
 
 import SvgIcon from '../SvgIcon/SvgIcon.jsx';
 
-import { ROUTE } from '../../variables/route.js';
+import { selectProduct } from '../../redux/productSlice.js';
+import { currencyFormat } from '../../utils/currencyHelpers.js';
 import { getPluralText } from '../../utils/textHelpers.js';
+import { ROUTE } from '../../variables/route.js';
 
 import cardCss from '../ProductCard/ProductCard.module.css';
 import css from './Product.module.css';

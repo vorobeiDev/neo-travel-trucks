@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../redux/productsOps.js';
 import { selectProducts, setPage } from '../redux/catalogSlice.js';
 
-const HEADER_HEIGHT = 90;
+const CUSTOM_TOP_PADDING = 90;
 
 const useLoadMore = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,8 @@ const useLoadMore = () => {
     await dispatch(setPage(page + 1));
     await dispatch(fetchProducts()).then(() => {
       if (productRef.current) {
-        const elementPosition = productRef.current.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+        const elementPosition = productRef
+          .current.getBoundingClientRect().top + window.scrollY - CUSTOM_TOP_PADDING;
         window.scrollTo({
           top: elementPosition,
           behavior: 'smooth',
